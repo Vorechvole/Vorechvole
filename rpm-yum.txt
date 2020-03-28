@@ -1,0 +1,17 @@
+# vypíše, který balíček vlastní soubor.
+rpm -qif <filename> 
+
+# zobrazí soubory, které balíček nainstaloval.
+rpm -qil <filename> 
+
+# nainstalované repoziráte
+/etc/yum.repos.d/repository.repo
+
+# zobraží nainstaloné rpm balíčky
+yum list installed
+
+# instalace bez konkretniho repo
+yum install atop --disablerepo="nazev repo"
+
+
+

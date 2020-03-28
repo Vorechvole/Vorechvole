@@ -1,0 +1,5 @@
+for ps in $(seq 6873 6912); do kill -15 $ps; done
+
+for word in $(seq 0 100); do echo "Ahoj"; done
+
+for i in $(seq 0 255); do for y in $(seq 0 255); do echo "192.168.$y.$i" ; done ; done
