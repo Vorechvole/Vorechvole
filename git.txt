@@ -1,0 +1,16 @@
+# naklonuje repozitar
+git clone $cesta
+
+# stav repozitare
+git status
+
+# commit
+git commit -m "zprava" soubor.txt
+git commit -a -m "zprava"
+git push origin master
+
+# pridani noveho souboru 
+git add $soubor
+
+# stahnuti zmen
+git pull
