@@ -11,7 +11,7 @@ vim /etc/services
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
 
-# deamon vytvoří server na portu 80, poslouchá/otevírá na portu 80
+# deamon otevře  server na portu 80, poslouchá/otevírá na portu 80
 nc -l 80 
 
 # otestuji pripojeni pomoci telnetu 
