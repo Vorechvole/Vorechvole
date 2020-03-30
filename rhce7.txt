@@ -1,0 +1,180 @@
+find / -name "*certdb.sh" -type f
+/usr/libexec/openldap/create-certdb.sh
+
+===[ port forwarding ]==============================================================================
+forward port[address] 
+man firewall-cmd|grep "\-\-add\-forward\-port"
+
+local: from 888/tcp to 80/tcp
+firewall-cmd --permanent --add-forward-port=port=888:proto=tcp:toport=80
+firewall-cmd --reload
+
+remote: from 8080/tcp to 10.19.32.47:80      
+firewall-cmd --add-masquerade --permanent
+firewall-cmd --permanent --add-forward-port=port=1975:proto=tcp:toport=80:toaddr=10.19.32.47
+firewall-cmd --reload
+
+or
+
+man firewalld.richlanguage|grep -i "forward"
+firewall-cmd  --permanent --add-rich-rule 'rule family="ipv4" source address="192.168.0.213" forward-port to-addr="192.168.0.82" to-port="25" protocol="tcp" port="666"'
+firewall-cmd --add-masquerade
+firewall-cmd --reload
+
+===[ ssh ]==============================================================================
+/etc/hosts.allow
+sshd: 10.19.32.: allow
+sshd: 10.19.32.47: allow
+sshd: 172.31.: allow
+sshd: *.praha1.cz: allow
+sshd: 10.19.32.: allow
+sshd: 10.19.36.213: allow
+sshd: 192.168.0.0/255.255.254.0: allow
+sshd: all: deny
+
+
+===[ ipv6 ]==============================================================================
+nmcli connection modify eth0 ipv6.addresses fddb:fe2a:ab1e::c0a8:64/64  ipv6.method manual
+ping6 fddb:fe2a:ab1e::c0a8:64 
+
+===[ team ]==============================================================================
+man nmcli-examples | grep Team1               
+man teamd.config | grep runner
+yum install NetworkManager-team && systemctl restart NetworkManager
+nmcli dev stat
+nmcli con show
+nmcli con add type team con-name Team1 ifname Team1 config '{"runner":{"name":"activebackup"}}'
+nmcli connection modify Team1 ipv4.addresses 10.0.0.50/24
+nmcli connection modify Team1 ipv4.gateway 10.0.0.1
+nmcli connection modify Team1 ipv4.method manual
+nmcli con add type team-slave con-name Team1-slave1 ifname ens224 master Team1
+nmcli con add type team-slave con-name Team1-slave2 ifname ens256 master Team1
+nmcli con up Team1
+teamdctl Team1 state
+
+
+===[ samba ]==============================================================================
+yum groupinstall file-server
+yum install cifs-utils
+systemctl smb nmb enable
+systemctl smb nmb start
+
+;       interfaces = lo ens192
+;       hosts allow = 127. .praha1.cz
+        hosts allow = 10.19.32.161, 10.19.32.47, 172.31.19.
+        hosts deny = 10.19.32.
+
+mkdir -p /sambashare && chmod 2775 /sambashare
+semanage fcontext -a -t samba_share_t "/sambaspace(/.*)?" && restorecon -R /sambaspace/ 
+
+testparm - check config syntax
+
+[sharename]
+path = /path/to/share
+writable = yes  # default is yes! 
+write list = @skupina  # users allowed to read/write, USE IT ALWAYS!
+valid users = @skupina, @dalsiskupina, uzivatel  # users allowed to mount share, by default everyone
+
+//10.19.32.193/sambashare /mnt  cifs  credentials=/root/cred,multiuser,sec=ntmlssp
+mount -t cifs //10.19.32.193/smbspace /martin -o username=martin,password=redhat,multiuser,sec=ntlmssp
+
+
+===[ nfs ]==============================================================================
+yum groupinstall file-server
+systemctl enable rcpbind nfs-server
+systemctl start rcpbind nfs-server
+
+public_content_rw_t
+
+secured:
+mkdir -m1777 -p /exports/hypnotoad
+/exports/hypnotoad 172.25.1.0/24(rw,sec=krb5p,sync)
+wget -O /etc/krb5p.keytab http://class...
+systemctl start nfs-secure-server
+systemctl enable nfs-secure-server
+firewall-cmd --permanent --add-service=nfs
+firewall-cmd --permanent --add-service=mountd
+firewall-cmd --permanent --add-service=rpc-bind
+firweall-cmd --reload
+                     
+secured extra:
+RPCNFSDARGS="-V 4.2"
+echo '/secure/export *.example.com(sec=krb5p,rw,sync)' >> /etc/exports
+mount -o sec=krb5p,v4.2 server:/secure/export /mnt/securedexport
+
+
+===[ iscsi ]==============================================================================
+yum install targetcli -y
+systemctl enable target; systemctl start target
+firewall-cmd --permanent --add-port=3260/tcp; firewall-cmd --reload
+man targetcli | head -n 38
+................
+yum install -y iscsi-initiator-utils
+root@brnv1a28~# cat /etc/iscsi/initiatorname.iscsi
+InitiatorName=iqn.2015-12.cz.praha1:brnv1a28
+systemctl enable iscsid; systemctl start iscsid
+man iscsiadm |grep "\-\-portal" 
+
+
+===[ smtp ]==============================================================================
+yum install mailx
+firwall-cmd --permanent --add-service=smtp
+systemctl enable postfix
+systemctl start postfix
+
+/etc/postfix/main.cf
+#SERVER1 postfix accepts emails for example.com  
+inet_interfaces = 192.168.0.1
+inet_protocol = ipv4
+mydestination =  $myhostname, localhost.$mydomain, localhost, example.com
+              
+#SERVER2 forward all emails to server1.example.com (null client) (usual desktop)
+myorigin = $mydomain
+inet_interfaces = localhost # or (loopback-only) we don't except any email
+inet_protocol = ipv4              
+mydestination = # we don't except any email as this server should act as null client
+relayhost = [server1.example.com]
+local_transport = error: local delivery disabled
+mynetworks = 127.0.0.0/8
+
+echo "zkouska mailu" | mail -s "zkouska" olie@example.com  
+
+
+===[ httpd ]==============================================================================
+cat /etc/httpd/conf.d/vhost.conf
+<virtualhost *:80>
+servername system1
+documentroot /var/www/html
+ErrorLog logs/host.system1-error_log
+TransferLog logs/host.system1-access_log
+</virtualhost>
+<directory /var/www/html/owndir>
+require local
+</directory>
+<directory /var/www/html/pass>
+authname "zaheslovany adresar"
+AuthType Basic
+AuthBasicProvider file
+AuthUserFile /etc/httpd/.password-file1
+Require valid-user
+</directory>
+
+<virtualhost *:80>
+servername www.system1
+documentroot /usr/local/vhost
+ErrorLog logs/host.www.system1-error_log
+TransferLog logs/host.www.system1-access_log
+</virtualhost>
+<directory /usr/local/vhost>
+require all granted
+</directory>
+
+Listen 8899
+<virtualhost *:8899>
+servername dynamic.system1
+documentroot /var/www/scripts
+WSGIScriptAlias / /var/www/scripts/app.wsgi
+</virtualhost>
+<directory /var/www/scripts>
+require all granted
+</directory>
