@@ -18,5 +18,6 @@ git pull
 # zobrazeni logu 
 git log
 git log --pretty=format:"%h - %ad, %an [%ae] : %s"
+
 # stahnuti obsahu gitu
 git clone "cestakegitu"
