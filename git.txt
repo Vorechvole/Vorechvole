@@ -19,4 +19,4 @@ git pull
 git log
 git log --pretty=format:"%h - %ad, %an [%ae] : %s"
 # stahnuti obsahu gitu
-git clone cestakegitu
+git clone "cestakegitu"
