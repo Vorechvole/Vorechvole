@@ -21,3 +21,6 @@ git log --pretty=format:"%h - %ad, %an [%ae] : %s"
 
 # stahnuti obsahu gitu
 git clone "cestakegitu"
+
+# zobrazi zmeny 
+git show "id_batche"
