@@ -1,0 +1,31 @@
+napsat vyraz nebo skript, kt. urci nasledujici:
+- kolik mac adres z /mnt/volris/oui.txt zacina na 00?
+- kolik mac adres z /mnt/volris/oui.txt nezacina na 00?
+- kolik je podle /mnt/volris/oui.txt registrovanych organizaci u IEEE a maji pool mac adres?
+- jak ulozit do promenne MOJEIP ip adresu?
+- kolik je v systemu celkem uzivatelu?
+- kolik uzivatelu ma pravo se prihlasit?
+- jakym prikazem lze zmenit typ filesystemu v /etc/fstab z 'xfs' na 'ext4'?
+
+
+
+
+1. vypsat vsechny ip adresy od 10.0.0.0 do 10.0.0.200
+2. vypsat vsechny ip adresy od 192.168.0.0 do 192.168.255.255
+3. pro kazdy soubor v adresari /root vypsat "soubor=<soubor>"
+
+4. napsat skript, kt. vygeneruje slovnik vsech kombinaci 
+	5 znakovych hesel slozenych z cisel a malych znaku
+	tzn. ze slovnik bude obsahovat napr. heslo "polda",
+	"jana1" nebo "p0lda".
+	celkovy pocet hesel bude tedy 35^5 ((cisla+znaky)^(delka))
+
+5. napsat skript, kt vypise na obrazovku z rozsahu 0..1000000
+	vsechna cisla delitelna 15, je pritom nutne klast duraz
+	na strojovy cas, cim mensi, tim lepsi...
+	(vypocet by nemel trvat dyl jak 3sekundy)
+	priklad, z rozhasu 0..100 vypada vystup takto:
+	
+	root@emg ~ # ./c1.sh
+	15 30 45 60 75 90 hotovo!
+	root@emg ~ #

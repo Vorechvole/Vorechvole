@@ -1,0 +1,29 @@
+AV[root@ly3app05 ~]# df -Ph /var
+Filesystem                Size  Used Avail Use% Mounted on
+/dev/mapper/vg01-lv_var   2.0G  1.6G  267M  86% /var
+AV[root@ly3app05 ~]#
+AV[root@ly3app05 ~]#
+AV[root@ly3app05 ~]# vgs
+  VG   #PV #LV #SN Attr   VSize  VFree
+  vg01   1   7   0 wz--n- 24.84g 2.84g
+AV[root@ly3app05 ~]#
+AV[root@ly3app05 ~]#
+AV[root@ly3app05 ~]# lvextend -r -L+1024M /dev/mapper/vg01-lv_var
+  Size of logical volume vg01/lv_var changed from 2.00 GiB (64 extents) to 3.00 GiB (96 extents).
+  Logical volume lv_var successfully resized.
+resize2fs 1.41.12 (17-May-2010)
+Filesystem at /dev/mapper/vg01-lv_var is mounted on /var; on-line resizing required
+old desc_blocks = 1, new_desc_blocks = 1
+Performing an on-line resize of /dev/mapper/vg01-lv_var to 786432 (4k) blocks.
+The filesystem on /dev/mapper/vg01-lv_var is now 786432 blocks long.
+
+AV[root@ly3app05 ~]#
+AV[root@ly3app05 ~]# df -Ph /var
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/vg01-lv_var  2.9G  1.6G  1.2G  57% /var
+AV[root@ly3app05 ~]#
+
+
+
+
+options - r = rovnou resizne lv

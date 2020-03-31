@@ -1,0 +1,11 @@
+# vypíše, který balíček vlastní soubor.
+rpm -qif <filename> 
+
+# zobrazí soubory, které balíček nainstaloval.
+rpm -qil <filename> 
+
+# umisteny repositaru   
+/etc/yum.repos.d/repository.repo
+
+
+

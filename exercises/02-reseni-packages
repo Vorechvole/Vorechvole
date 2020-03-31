@@ -1,0 +1,16 @@
+1. nainstalovat atop
+	yum install atop
+
+2. jakou verzi htop mame nainstalovanou?
+	rpm -qil htop | grep  'Version'
+
+3. kolik souboru bylo nainstalovano s balickem tcpdump?
+	rpm -qil tcpdump
+
+4. jaky rpm balicek poskytuje prikaz links?
+	which links	
+	usr/bin/links
+	rpm -qif usr/bin/links	
+
+5. v /mnt/volris/ je CentOS-8.1.1911-x86_64-dvd1.iso; pouzij ho jako lokalni repositar
+	je potreba ho namountovat, otevrit si repozitar a upravit cestou.

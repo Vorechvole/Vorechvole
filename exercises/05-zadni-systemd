@@ -1,0 +1,3 @@
+- zjistit zda jaky unity mame v systemd zfajlovany
+- pokud mame nejaky zfajlovany unity, tak resetovat, aby nebyly jiz nadale videt jako zfajlovane
+- sluzbu kdump disablovat tak, aby se nespoustela po startu a nesla spustit ani rucne!

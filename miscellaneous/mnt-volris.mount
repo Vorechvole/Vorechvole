@@ -1,0 +1,13 @@
+[Unit]
+  Description=dadou mount
+  Requires=network-online.target
+  After=network-online.service
+
+[Mount]
+  What=//192.168.0.214/linux-share/volris
+  Where=/mnt/volris
+  Options=username=shareman,password=startUJ6319521,vers=3.0,rw
+  Type=cifs
+
+[Install]
+  WantedBy=multi-user.target

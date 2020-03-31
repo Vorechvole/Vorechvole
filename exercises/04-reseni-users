@@ -1,0 +1,13 @@
+1. vytvorit uzivatele solverman
+	useradd solverman
+
+2. vygenerovat mu ssh klic a jeho public klic ulozit do jeho ~, aby se mohl prihlasit bez hesla
+	ssh-keygen
+
+3. nastavit mu heslo na daniel
+	passwd daniel
+
+4. povolit mu cron
+	vytvořit cron.allow, pripadne odstranit z deny
+
+5.  do jeho cronu nastavit ulohu, kt. vypise aktualni obsazeni FS /var kazdych 10 minut do /tmp/fs-var-info

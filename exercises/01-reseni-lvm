@@ -1,0 +1,23 @@
+1. zvetsit LV `/var` na 4G
+	lvextend -r -L 4G cesta k /var
+
+2. stahnout http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-s390x.iso a namountovat to jako /mnt/instal
+	wget "url" 
+	/path/to/file.iso /path/to/folder iso9660 loop 0 0	
+
+3. disk sdc pridat do VG vg1
+	vgextend vg1 /dev/sdcx
+
+4. disk sdb rozdelit a 2G pridat do VG vg1, 2G pridat do nove VG vg2
+	fdisk rozdělit na dvě partions 
+	lvextend vg1 -L 2G  /dev/sdb1
+        lvextend vg2 -L 2G  /dev/sdb2
+		
+5. ve VG vg2 vytvorit LV storage2 a namountovat ho do `/mnt/storage2`
+	lvcreate -L 2G vg2  
+	lvrename vg2 vytvoreny nazev novy nazev
+
+6. vytvorit 500M LV vg1/storage a namountovat ho jako READONLY do `/mnt/storage`
+vsechna nastaveni musi byt perzistentni po rebootu operacniho systemu
+	lvcreate -L 500M vg1
+	lvrename vg1 vytvoreny nazev novy nazev

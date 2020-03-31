@@ -1,0 +1,7 @@
+- zvetsit LV `/var` na 4G
+- stahnout http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-s390x.iso a namountovat to jako /mnt/install
+- disk sdc pridat do VG vg1
+- disk sdb rozdelit a 2G pridat do VG vg1, 2G pridat do nove VG vg2
+- ve VG vg2 vytvorit LV storage2 a namountovat ho do `/mnt/storage2`
+- vytvorit 500M LV vg1/storage a namountovat ho jako READONLY do `/mnt/storage`
+vsechna nastaveni musi byt perzistentni po rebootu operacniho systemu
