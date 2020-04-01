@@ -29,4 +29,22 @@ tail -f /tmp/fs-samba-info
 # sifrovane kopirovani mezi servery 
 scp -r odkud kam
 scp -r /mnt/volris/ volrabd@se92.olieexpress.com:/path/to/directory
-scp -r volrabd@se92.olieexpress.com:/mnt/volris ./ . .
+scp -r volrabd@se92.olieexpress.com:/mnt/volris ./ . .  
+
+# informace o cpu
+lscpu
+
+# informace o RAM
+free -m
+
+# jmeno
+uname
+
+#uptime
+uptime
+
+# uprava zavadece
+vim /etc/default/grub
+# pro reset je potreba provest
+up#grub2-mkconfig -o "$(readlink -e /etc/grub2.conf)"
+
