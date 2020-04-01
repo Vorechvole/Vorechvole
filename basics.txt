@@ -26,3 +26,7 @@ tail -f /tmp/fs-samba-info
 # email jednotlivých uživatelů
 /var/spool/mail/root
 
+# sifrovane kopirovani mezi servery 
+scp -r odkud kam
+scp -r /mnt/volris/ volrabd@se92.olieexpress.com:/path/to/directory
+scp -r volrabd@se92.olieexpress.com:/mnt/volris ./ . .
