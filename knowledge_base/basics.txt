@@ -51,3 +51,8 @@ vim /etc/default/grub
 # pro reset je potreba provest
 up#grub2-mkconfig -o "$(readlink -e /etc/grub2.conf)"
 
+# zobrazi pouze citelne znaky bez ASCII tabulky
+string "dokument"
+
+# zobrazi/vypíše jejich velikost a hodnotu kontrolního součtu
+cksum "dokument"
