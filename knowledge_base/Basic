@@ -1,6 +1,0 @@
-#zobrazi binárku
-which 
-#vypíše název souborů v aktualnim umisteni
-ls -1
-
-

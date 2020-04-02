@@ -1,2 +1,0 @@
-# ukáže status unit
-systemctl list-units --type service --all

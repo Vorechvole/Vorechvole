@@ -1,5 +1,0 @@
-1. v puttygen vygenerovat private+public key
-2. public uložit do souboru /root/.ssh/authorized_keys
-3. private načíst v pageantu
-
-# permissions na "authorized_keys" nesmí obsahovat právo pro "others".
