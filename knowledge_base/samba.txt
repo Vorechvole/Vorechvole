@@ -1,0 +1,5 @@
+# z windows do linux
+1. install samba cifs-utils
+2. nakonfigurovat windows share, opravneni na sdileni pres usera we windows. Zalozil jsem usera "shareman", ktery ma prava jak do slozky, tak an sdileni-opravneni. Pote jsem namountoval
+#//192.168.0.110/Linux /mnt/windows cifs _netdev,defaults,vers=3.0,username=shareman,password=poldapolda     0 0
+

@@ -1,0 +1,12 @@
+# zobrazí obsazené místo souboru/dir
+du -sh *
+
+# mount isa
+/path/to/file.iso /path/to/folder iso9660 loop 0 0
+
+# po pridani partiony, je nutne provest tento prikaz, prida partition, aby ji videl
+partx -v -a /dev/sa
+
+# v fdisku měním fs pomocí "t"
+fdisk
+t

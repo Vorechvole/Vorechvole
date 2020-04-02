@@ -1,0 +1,8 @@
+# zmeni vlastnika na nize uvedeneho, v nize uvedenem adresari
+chown -R ftpuser /var/www/html/
+# zalozeni usera
+useradd username
+# zmeni heslo
+passwd username
+# zmena opravneni
+chown (700,u+x) /home/daniel

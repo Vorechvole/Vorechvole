@@ -1,0 +1,5 @@
+[install-dvd]
+name="install dvd iso CentOS-8.1.1911"
+baseurl=/mnt/install/BaseOS/
+enabled=1
+gpgcheck=0
