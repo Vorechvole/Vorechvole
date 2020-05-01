@@ -1,0 +1,430 @@
+[root@se92 ~]# curl https://get.acme.sh | sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   775    0   775    0     0   3270      0 --:--:-- --:--:-- --:--:--  3270
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  192k  100  192k    0     0   280k      0 --:--:-- --:--:-- --:--:--  280k
+[Thu Apr 16 21:10:23 CEST 2020] Installing from online archive.
+[Thu Apr 16 21:10:23 CEST 2020] Downloading https://github.com/acmesh-official/acme.sh/archive/master.tar.gz
+[Thu Apr 16 21:10:24 CEST 2020] Extracting master.tar.gz
+[Thu Apr 16 21:10:24 CEST 2020] It is recommended to install socat first.
+[Thu Apr 16 21:10:24 CEST 2020] We use socat for standalone server if you use standalone mode.
+[Thu Apr 16 21:10:24 CEST 2020] If you don't use standalone mode, just ignore this warning.
+[Thu Apr 16 21:10:24 CEST 2020] Installing to /root/.acme.sh
+[Thu Apr 16 21:10:24 CEST 2020] Installed to /root/.acme.sh/acme.sh
+[Thu Apr 16 21:10:24 CEST 2020] Installing alias to '/root/.bashrc'
+[Thu Apr 16 21:10:24 CEST 2020] OK, Close and reopen your terminal to start using acme.sh
+[Thu Apr 16 21:10:24 CEST 2020] Installing alias to '/root/.cshrc'
+[Thu Apr 16 21:10:24 CEST 2020] Installing alias to '/root/.tcshrc'
+[Thu Apr 16 21:10:24 CEST 2020] Installing cron job
+no crontab for root
+no crontab for root
+[Thu Apr 16 21:10:24 CEST 2020] Good, bash is found, so change the shebang to use bash as preferred.
+[Thu Apr 16 21:10:26 CEST 2020] OK
+[Thu Apr 16 21:10:26 CEST 2020] Install success!
+[root@se92 ~]#
+[root@se92 ~]# yum install socat
+CentOS-8 - AppStream                                                                                                                                 8.4 kB/s | 4.3 kB     00:00
+CentOS-8 - AppStream                                                                                                                                 4.7 MB/s | 6.8 MB     00:01
+CentOS-8 - Base                                                                                                                                       27 kB/s | 3.8 kB     00:00
+CentOS-8 - Base                                                                                                                                      4.1 MB/s | 6.0 MB     00:01
+CentOS-8 - Extras                                                                                                                                    9.7 kB/s | 1.5 kB     00:00
+CentOS-8 - Extras                                                                                                                                     12 kB/s | 5.5 kB     00:00
+Extra Packages for Enterprise Linux Modular 8 - x86_64                                                                                               7.0 kB/s |  34 kB     00:04
+Extra Packages for Enterprise Linux Modular 8 - x86_64                                                                                               123 kB/s | 116 kB     00:00
+Extra Packages for Enterprise Linux 8 - x86_64                                                                                                        38 kB/s |  27 kB     00:00
+Extra Packages for Enterprise Linux 8 - x86_64                                                                                                       1.2 MB/s | 6.3 MB     00:05
+install dvd iso CentOS-8.1.1911                                                                                                                      0.0  B/s |   0  B     00:00
+Failed to download metadata for repo 'install-dvd'
+Error: Failed to download metadata for repo 'install-dvd'
+[root@se92 ~]#
+[root@se92 ~]# yum install socat --disablerepo="install-dvd"
+Last metadata expiration check: 0:00:21 ago on Thu 16 Apr 2020 09:11:17 PM CEST.
+Dependencies resolved.
+=====================================================================================================================================================================================
+ Package                                 Architecture                             Version                                          Repository                                   Size
+=====================================================================================================================================================================================
+Installing:
+ socat                                   x86_64                                   1.7.3.2-6.el8                                    AppStream                                   298 k
+
+Transaction Summary
+=====================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 298 k
+Installed size: 1.1 M
+Is this ok [y/N]: y
+Downloading Packages:
+socat-1.7.3.2-6.el8.x86_64.rpm                                                                                                                       2.1 MB/s | 298 kB     00:00
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                505 kB/s | 298 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                             1/1
+  Installing       : socat-1.7.3.2-6.el8.x86_64                                                                                                                                  1/1
+  Running scriptlet: socat-1.7.3.2-6.el8.x86_64                                                                                                                                  1/1
+  Verifying        : socat-1.7.3.2-6.el8.x86_64                                                                                                                                  1/1
+
+Installed:
+  socat-1.7.3.2-6.el8.x86_64
+
+Complete!
+[root@se92 ~]#
+[root@se92 ~]#
+[root@se92 ~]#
+[root@se92 ~]#
+[root@se92 ~]#
+[root@se92 ~]# ll
+total 4
+-rw-------. 1 root root 2100 Mar  3 13:52 anaconda-ks.cfg
+[root@se92 ~]#
+[root@se92 ~]# ll -a
+total 48
+dr-xr-x---.  6 root root  249 Apr 16 21:10 .
+dr-xr-xr-x. 17 root root  224 Mar  3 13:43 ..
+drwx------.  5 root root  121 Apr 16 21:10 .acme.sh
+-rw-------.  1 root root 2100 Mar  3 13:52 anaconda-ks.cfg
+-rw-------.  1 root root 5107 Apr 15 19:23 .bash_history
+-rw-r--r--.  1 root root   18 May 11  2019 .bash_logout
+-rw-r--r--.  1 root root  176 May 11  2019 .bash_profile
+-rw-r--r--.  1 root root  207 Apr 16 21:10 .bashrc
+drwx------.  3 root root   16 Mar  4 01:06 .cache
+drwx------.  4 root root   28 Mar  4 01:06 .config
+-rw-r--r--.  1 root root  136 Apr 16 21:10 .cshrc
+-rw-------.  1 root root   32 Mar  3 18:31 .lesshst
+drwx------.  3 root root   19 Mar  4 01:06 .local
+-rw-------.  1 root root    0 Mar  3 15:51 .python_history
+-rw-r--r--.  1 root root  165 Apr 16 21:10 .tcshrc
+-rw-------.  1 root root 8767 Mar 26 14:26 .viminfo
+[root@se92 ~]#
+[root@se92 ~]#
+[root@se92 ~]# cd .acme.sh/
+[root@se92 .acme.sh]# ll
+total 216
+-rw-r--r--. 1 root root    152 Apr 16 21:10 account.conf
+-rwxr-xr-x. 1 root root 196694 Apr 16 21:10 acme.sh
+-rw-r--r--. 1 root root     78 Apr 16 21:10 acme.sh.csh
+-rw-r--r--. 1 root root     78 Apr 16 21:10 acme.sh.env
+drwxr-xr-x. 2 root root   4096 Apr 16 21:10 deploy
+drwxr-xr-x. 2 root root   4096 Apr 16 21:10 dnsapi
+drwxr-xr-x. 2 root root    208 Apr 16 21:10 notify
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# links --dump https://strachota.net/ip/simple
+-bash: links: command not found
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# wget https://strachota.net/ip/simple
+--2020-04-16 21:32:37--  https://strachota.net/ip/simple
+Resolving strachota.net (strachota.net)... 85.118.128.29
+Connecting to strachota.net (strachota.net)|85.118.128.29|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://strachota.net/ip/simple/ [following]
+--2020-04-16 21:32:37--  https://strachota.net/ip/simple/
+Reusing existing connection to strachota.net:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 14 [text/html]
+Saving to: ‘simple’
+
+simple                                        100%[==============================================================================================>]      14  --.-KB/s    in 0s
+
+2020-04-16 21:32:37 (785 KB/s) - ‘simple’ saved [14/14]
+
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# cat simple
+83.240.121.136[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# netstat -tulpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      1333/systemd-resolv
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      955/sshd
+tcp6       0      0 :::5355                 :::*                    LISTEN      1333/systemd-resolv
+tcp6       0      0 :::22                   :::*                    LISTEN      955/sshd
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           1333/systemd-resolv
+udp        0      0 0.0.0.0:5355            0.0.0.0:*                           1333/systemd-resolv
+udp6       0      0 :::5355                 :::*                                1333/systemd-resolv
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# firewall-cmd
+usage: see firewall-cmd man page
+No option specified.
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s3
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# firewall-cmd --add-port=80/tcp --permanent
+success
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# firewall-cmd --reload
+success
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp0s3
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports: 80/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# netstat -tupln
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      1333/systemd-resolv
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      955/sshd
+tcp6       0      0 :::5355                 :::*                    LISTEN      1333/systemd-resolv
+tcp6       0      0 :::22                   :::*                    LISTEN      955/sshd
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           1333/systemd-resolv
+udp        0      0 0.0.0.0:5355            0.0.0.0:*                           1333/systemd-resolv
+udp6       0      0 :::5355                 :::*                                1333/systemd-resolv
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# nc -l 80
+Ahoj muj leader
+▒▒▒▒^C
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# ./acme.sh
+https://github.com/acmesh-official/acme.sh
+v2.8.6
+Usage: acme.sh  command ...[parameters]....
+Commands:
+  --help, -h               Show this help message.
+  --version, -v            Show version info.
+  --install                Install acme.sh to your system.
+  --uninstall              Uninstall acme.sh, and uninstall the cron job.
+  --upgrade                Upgrade acme.sh to the latest code from https://github.com/acmesh-official/acme.sh.
+  --issue                  Issue a cert.
+  --signcsr                Issue a cert from an existing csr.
+  --deploy                 Deploy the cert to your server.
+  --install-cert           Install the issued cert to apache/nginx or any other server.
+  --renew, -r              Renew a cert.
+  --renew-all              Renew all the certs.
+  --revoke                 Revoke a cert.
+  --remove                 Remove the cert from list of certs known to acme.sh.
+  --list                   List all the certs.
+  --showcsr                Show the content of a csr.
+  --install-cronjob        Install the cron job to renew certs, you don't need to call this. The 'install' command can automatically install the cron job.
+  --uninstall-cronjob      Uninstall the cron job. The 'uninstall' command can do this automatically.
+  --cron                   Run cron job to renew all the certs.
+  --toPkcs                 Export the certificate and key to a pfx file.
+  --toPkcs8                Convert to pkcs8 format.
+  --update-account         Update account info.
+  --register-account       Register account key.
+  --deactivate-account     Deactivate the account.
+  --create-account-key     Create an account private key, professional use.
+  --create-domain-key      Create an domain private key, professional use.
+  --createCSR, -ccsr       Create CSR , professional use.
+  --deactivate             Deactivate the domain authz, professional use.
+  --set-notify             Set the cron notification hook, level or mode.
+
+
+Parameters:
+  --domain, -d   domain.tld         Specifies a domain, used to issue, renew or revoke etc.
+  --challenge-alias domain.tld      The challenge domain alias for DNS alias mode: https://github.com/acmesh-official/acme.sh/wiki/DNS-alias-mode
+  --domain-alias domain.tld         The domain alias for DNS alias mode: https://github.com/acmesh-official/acme.sh/wiki/DNS-alias-mode
+  --force, -f                       Used to force to install or force to renew a cert immediately.
+  --staging, --test                 Use staging server, just for test.
+  --debug                           Output debug info.
+  --output-insecure                 Output all the sensitive messages. By default all the credentials/sensitive messages are hidden from the output/debug/log for security.
+  --webroot, -w  /path/to/webroot   Specifies the web root folder for web root mode.
+  --standalone                      Use standalone mode.
+  --alpn                            Use standalone alpn mode.
+  --stateless                       Use stateless mode, see: https://github.com/acmesh-official/acme.sh/wiki/Stateless-Mode
+  --apache                          Use apache mode.
+  --dns [dns_cf|dns_dp|dns_cx|/path/to/api/file]   Use dns mode or dns api.
+  --dnssleep   300                  The time in seconds to wait for all the txt records to take effect in dns api mode. It's not necessary to use this by default, acme.sh polls dns status automatically.
+
+  --keylength, -k [2048]            Specifies the domain key length: 2048, 3072, 4096, 8192 or ec-256, ec-384, ec-521.
+  --accountkeylength, -ak [2048]    Specifies the account key length: 2048, 3072, 4096
+  --log    [/path/to/logfile]       Specifies the log file. The default is: "/root/.acme.sh/acme.sh.log" if you don't give a file path here.
+  --log-level 1|2                   Specifies the log level, default is 1.
+  --syslog [0|3|6|7]                Syslog level, 0: disable syslog, 3: error, 6: info, 7: debug.
+
+  These parameters are to install the cert to nginx/apache or any other server after issue/renew a cert:
+
+  --cert-file                       After issue/renew, the cert will be copied to this path.
+  --key-file                        After issue/renew, the key will be copied to this path.
+  --ca-file                         After issue/renew, the intermediate cert will be copied to this path.
+  --fullchain-file                  After issue/renew, the fullchain cert will be copied to this path.
+
+  --reloadcmd "service nginx reload" After issue/renew, it's used to reload the server.
+
+  --server SERVER                   ACME Directory Resource URI. (default: https://acme-v02.api.letsencrypt.org/directory)
+  --accountconf                     Specifies a customized account config file.
+  --home                            Specifies the home dir for acme.sh.
+  --cert-home                       Specifies the home dir to save all the certs, only valid for '--install' command.
+  --config-home                     Specifies the home dir to save all the configurations.
+  --useragent                       Specifies the user agent string. it will be saved for future use too.
+  --accountemail                    Specifies the account email, only valid for the '--install' and '--update-account' command.
+  --accountkey                      Specifies the account key path, only valid for the '--install' command.
+  --days                            Specifies the days to renew the cert when using '--issue' command. The default value is 60 days.
+  --httpport                        Specifies the standalone listening port. Only valid if the server is behind a reverse proxy or load balancer.
+  --tlsport                         Specifies the standalone tls listening port. Only valid if the server is behind a reverse proxy or load balancer.
+  --local-address                   Specifies the standalone/tls server listening address, in case you have multiple ip addresses.
+  --listraw                         Only used for '--list' command, list the certs in raw format.
+  --stopRenewOnError, -se           Only valid for '--renew-all' command. Stop if one cert has error in renewal.
+  --insecure                        Do not check the server certificate, in some devices, the api server's certificate may not be trusted.
+  --ca-bundle                       Specifies the path to the CA certificate bundle to verify api server's certificate.
+  --ca-path                         Specifies directory containing CA certificates in PEM format, used by wget or curl.
+  --nocron                          Only valid for '--install' command, which means: do not install the default cron job. In this case, the certs will not be renewed automatically.
+  --noprofile                       Only valid for '--install' command, which means: do not install aliases to user profile.
+  --no-color                        Do not output color text.
+  --force-color                     Force output of color text. Useful for non-interactive use with the aha tool for HTML E-Mails.
+  --ecc                             Specifies to use the ECC cert. Valid for '--install-cert', '--renew', '--revoke', '--toPkcs' and '--createCSR'
+  --csr                             Specifies the input csr.
+  --pre-hook                        Command to be run before obtaining any certificates.
+  --post-hook                       Command to be run after attempting to obtain/renew certificates. No matter the obtain/renew is success or failed.
+  --renew-hook                      Command to be run once for each successfully renewed certificate.
+  --deploy-hook                     The hook file to deploy cert
+  --ocsp-must-staple, --ocsp        Generate ocsp must Staple extension.
+  --always-force-new-domain-key     Generate new domain key when renewal. Otherwise, the domain key is not changed by default.
+  --auto-upgrade   [0|1]            Valid for '--upgrade' command, indicating whether to upgrade automatically in future.
+  --listen-v4                       Force standalone/tls server to listen at ipv4.
+  --listen-v6                       Force standalone/tls server to listen at ipv6.
+  --openssl-bin                     Specifies a custom openssl bin location.
+  --use-wget                        Force to use wget, if you have both curl and wget installed.
+  --yes-I-know-dns-manual-mode-enough-go-ahead-please  Force to use dns manual mode: https://github.com/acmesh-official/acme.sh/wiki/dns-manual-mode
+  --branch, -b                      Only valid for '--upgrade' command, specifies the branch name to upgrade to.
+
+  --notify-level  0|1|2|3           Set the notification level:  Default value is 2.
+                                     0: disabled, no notification will be sent.
+                                     1: send notifications only when there is an error.
+                                     2: send notifications when a cert is successfully renewed, or there is an error.
+                                     3: send notifications when a cert is skipped, renewed, or error.
+  --notify-mode   0|1               Set notification mode. Default value is 0.
+                                     0: Bulk mode. Send all the domain's notifications in one message(mail).
+                                     1: Cert mode. Send a message for every single cert.
+  --notify-hook   [hookname]        Set the notify hook
+
+
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# ./acme.sh --issue -d se92.olieexpress.com --standalone --use-wget
+[Thu Apr 16 21:43:45 CEST 2020] Standalone mode.
+[Thu Apr 16 21:43:46 CEST 2020] Create account key ok.
+[Thu Apr 16 21:43:46 CEST 2020] Registering account
+[Thu Apr 16 21:43:48 CEST 2020] Registered
+[Thu Apr 16 21:43:48 CEST 2020] ACCOUNT_THUMBPRINT='pt1Zdvzd5PQgLdar7RPojrqegtRzdzNiw2wmURkBMT8'
+[Thu Apr 16 21:43:48 CEST 2020] Creating domain key
+[Thu Apr 16 21:43:48 CEST 2020] The domain key is here: /root/.acme.sh/se92.olieexpress.com/se92.olieexpress.com.key
+[Thu Apr 16 21:43:48 CEST 2020] Single domain='se92.olieexpress.com'
+[Thu Apr 16 21:43:48 CEST 2020] Getting domain auth token for each domain
+[Thu Apr 16 21:43:50 CEST 2020] Getting webroot for domain='se92.olieexpress.com'
+[Thu Apr 16 21:43:50 CEST 2020] Verifying: se92.olieexpress.com
+[Thu Apr 16 21:43:50 CEST 2020] Standalone mode server
+[Thu Apr 16 21:43:55 CEST 2020] Success
+[Thu Apr 16 21:43:55 CEST 2020] Verify finished, start to sign.
+[Thu Apr 16 21:43:55 CEST 2020] Lets finalize the order, Le_OrderFinalize: https://acme-v02.api.letsencrypt.org/acme/finalize/83619128/3024686800
+[Thu Apr 16 21:43:57 CEST 2020] Download cert, Le_LinkCert: https://acme-v02.api.letsencrypt.org/acme/cert/04c0ad6c6d6df21e0c9234102ca854ea89e2
+[Thu Apr 16 21:43:58 CEST 2020] Cert success.
+-----BEGIN CERTIFICATE-----
+MIIFYDCCBEigAwIBAgISBMCtbG1t8h4MkjQQLKhU6oniMA0GCSqGSIb3DQEBCwUA
+MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD
+ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0yMDA0MTYxODQzNTdaFw0y
+MDA3MTUxODQzNTdaMB8xHTAbBgNVBAMTFHNlOTIub2xpZWV4cHJlc3MuY29tMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4cWpP02Q20FI0Ew78pmuYujo
+lHwcnhlAOswsIRqyBW3ipVvzfvld+LmbcLYOL2ibkCBnwsNxO32YCzJnVBY3QRDJ
+96w3DKzAD92VRcOnlAkYz8B0uo7TTimgSLBTs9uC/vG8hMBaCvJhFaBNognbDfL4
+BeI5Ep1woch7Ks3NBiSKdkq/duX/Dw0QQmOJwNYfO/JTSD91hrbLuK2vX4Ap0524
+cxBsx3CIsjsE+MQANdo8eNtETrfW2Y6+pRVRjXswIMjqwuh9xbMhAnRQvnbqZ4ah
+FfUzjxJENHbTVUNkhEfONnqEvDjxjyBxRN14mhRvVYLLSx8/cCmg+NmFgAcyRQID
+AQABo4ICaTCCAmUwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMB
+BggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQgL2rX099mGsuCFAdk
+/7eJZo5MkzAfBgNVHSMEGDAWgBSoSmpjBH3duubRObemRWXv86jsoTBvBggrBgEF
+BQcBAQRjMGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5j
+cnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5j
+cnlwdC5vcmcvMB8GA1UdEQQYMBaCFHNlOTIub2xpZWV4cHJlc3MuY29tMEwGA1Ud
+IARFMEMwCAYGZ4EMAQIBMDcGCysGAQQBgt8TAQEBMCgwJgYIKwYBBQUHAgEWGmh0
+dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIIBBAYKKwYBBAHWeQIEAgSB9QSB8gDw
+AHcA5xLysDd+GmL7jskMYYTx6ns3y1YdESZb8+DzS/JBVG4AAAFxhITz6gAABAMA
+SDBGAiEAr7yMV5werxNbdVQ1TiI3QsLNE0GVck9c9P/tHPTyJD8CIQC8e7Y1ttYM
+kzjWLZPP4ZSMuRtcC50GYT/6dzD+wVtiVgB1AAe3XBvlfWj/8bDGHSMVx7rmV3xX
+lLdq7rxhOhpp06IcAAABcYSE8/EAAAQDAEYwRAIgAvZ95r2zD76F0W/pPbWUH2Oa
+xU1ZR95MdyY5SvAOG3kCICSrnFo6wiGQAhDWHaJbOBTL+CHUqQ3oSZsPsH6eE41b
+MA0GCSqGSIb3DQEBCwUAA4IBAQArSUVfbwWYurU+WmQdWhlTom33NXgoCzUVzPKs
+HiHSyO2QpLkEHqsPhyxzP7QtbcUue7NdsskEXcQ55W7x1lBoXONGjMPnoKt4WM8l
+Py+cKElINwVbH609lvlq+QH4ztmTAWYIhD7sUifV26LI7Zs9mAW9ORxW7M3FgFXC
+4BczubEuso0FdIO/yk66YGVDQRbjtzytV8xj0Z9NHmm7wYrUmk/gijwkxmWdWTLm
+fJK/dl5MX47DE4/RDyoBAWuN3MsPjXzLzHAmCxRa9BxIAXsTZoGU/5H4z1u7teHr
+IG9g46cGwEARDYGmeZMBuZDSKYPkzdqJuR73h42vMdNKv0Z5
+-----END CERTIFICATE-----
+[Thu Apr 16 21:43:58 CEST 2020] Your cert is in  /root/.acme.sh/se92.olieexpress.com/se92.olieexpress.com.cer
+[Thu Apr 16 21:43:58 CEST 2020] Your cert key is in  /root/.acme.sh/se92.olieexpress.com/se92.olieexpress.com.key
+[Thu Apr 16 21:43:58 CEST 2020] The intermediate CA cert is in  /root/.acme.sh/se92.olieexpress.com/ca.cer
+[Thu Apr 16 21:43:58 CEST 2020] And the full chain certs is there:  /root/.acme.sh/se92.olieexpress.com/fullchain.cer
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# ll
+total 224
+-rw-r--r--. 1 root root    242 Apr 16 21:43 account.conf
+-rwxr-xr-x. 1 root root 196694 Apr 16 21:10 acme.sh
+-rw-r--r--. 1 root root     78 Apr 16 21:10 acme.sh.csh
+-rw-r--r--. 1 root root     78 Apr 16 21:10 acme.sh.env
+drwxr-xr-x. 3 root root     42 Apr 16 21:43 ca
+drwxr-xr-x. 2 root root   4096 Apr 16 21:10 deploy
+drwxr-xr-x. 2 root root   4096 Apr 16 21:10 dnsapi
+-rw-r--r--. 1 root root    394 Apr 16 21:43 http.header
+drwxr-xr-x. 2 root root    208 Apr 16 21:10 notify
+drwxr-xr-x. 2 root root    207 Apr 16 21:43 se92.olieexpress.com
+-rw-r--r--. 1 root root     14 Apr 16 21:32 simple
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# tar czf se92.tar se92.olieexpress.com/
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# ll /root/.acme.sh/se92.tar
+-rw-r--r--. 1 root root 4927 Apr 16 21:46 /root/.acme.sh/se92.tar
+[root@se92 .acme.sh]#
+[root@se92 .acme.sh]# date
+Thu Apr 16 21:53:49 CEST 2020
+[root@se92 .acme.sh]#

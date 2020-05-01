@@ -1,10 +1,6 @@
 #!/bin/bash
 
-for nazev in *; do
-  if [ -d $nazev ]; then
-    echo "$nazev je adresar."
-  else
-    echo "$nazev je soubor."
-  fi
+cat /root/passwd | while read line; do
+  cut -d ":" -f1,4 | grep 
 done
 
